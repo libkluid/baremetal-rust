@@ -1,0 +1,7 @@
+[package]
+name = "cortex-m"
+authors = ["libkluid <kluid.me@yahoo.com>"]
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]

@@ -1,0 +1,8 @@
+[package]
+name = "rp2040"
+authors = ["libkluid <kluid.me@yahoo.com>"]
+version = "0.1.0"
+edition = "2021"
+
+[dependencies.cortex-m]
+path = "../../arch/cortex-m"
