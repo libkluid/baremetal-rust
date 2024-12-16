@@ -38,12 +38,12 @@ SECTIONS {
   .bss :
   {
     *(.bss .bss.*);
-  } > RAM
+  } > SRAM
 
   .data :
   {
     *(.data .data.*);
-  } > RAM
+  } > SRAM
 
   /DISCARD/ :
   {
