@@ -1,0 +1,10 @@
+[package]
+name = "stm32f103rbt6"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies.panic-halt]
+path = "../../runtime/panic-halt"
+
+[dependencies.cortex-m]
+path = "../../arch/cortex-m"
