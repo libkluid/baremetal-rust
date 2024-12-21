@@ -18,25 +18,14 @@ extern "C" {
 }
 
 pub unsafe fn device_init() {
+    let sidata = &_sidata as *const u32;
     let sdata = &_sdata as *const u32 as usize;
     let edata = &_edata as *const u32 as usize;
-
-    let lma_src = &_sidata as *const u32;
-    let mut vma_est = sdata as *mut u32;
-
-    while (vma_est as usize) < edata {
-        let word = lma_src.read();
-        vma_est.write(word);
-        vma_est = vma_est.offset(1);
-    }
+    let count = (edata - sdata) / core::mem::size_of::<u32>();
+    core::ptr::copy_nonoverlapping::<u32>(sidata, sdata as *mut u32, count);
 
     let sbss = &_sbss as *const u32 as usize;
     let ebss = &_ebss as *const u32 as usize;
-
-    let mut b = sbss as *mut u32;
-
-    while (b as usize) < ebss {
-        b.write(0);
-        b = b.offset(1);
-    }
+    let count = (ebss - sbss) / core::mem::size_of::<u32>();
+    core::ptr::write_bytes(sbss as *mut u32, 0, count);
 }
