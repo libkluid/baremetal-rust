@@ -1,3 +1,7 @@
+pub unsafe fn init_clock() {
+    crate::rcc::clocks::default();
+}
+
 extern "C" {
     // load address(LMA) of .data section
     static _sidata: u32;
